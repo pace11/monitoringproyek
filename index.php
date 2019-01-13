@@ -90,7 +90,7 @@
 <script src="dist/js/demo.js"></script>
 <script>
   $(function () {
-    $('#example1').DataTable()
+    $('#table1').DataTable()
   })
 </script>
 <script>

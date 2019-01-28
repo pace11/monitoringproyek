@@ -1,7 +1,7 @@
 <section class="content-header">
-    <h1>Input 1</h1>
+    <h1>INPUT DIREKSI PEKERJAAN </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Input</a></li>
+        <li><a href="#"><i class="fa fa-home"></i> Beranda</a></li>
     </ol>
 </section>
 
@@ -13,7 +13,7 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <div class="pull-left">
-                                <h3 class="box-title">Data Table Input 1</h3>
+                                <h3 class="box-title">Data Table Direksi Pekerjaan</h3>
                             </div>
                             <div class="pull-right">
                                 <a href="?page=input1tambah" class="btn btn-success"><i class="fa fa-plus-square"></i> Tambah Data</a>
@@ -24,33 +24,30 @@
                                 <table id="table1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>NODIN USER</th>
-                                            <th>TANGGAL</th>
-                                            <th>URAIAN</th>
-                                            <th>NILAI RAB</th>
-                                            <th>NODIN REN</th>
-                                            <th>TANGGAL REN</th>
-                                            <th>SUMBER ANGGARAN</th>
-                                            <th>NILAI HPE</th>
+                                            <th>NOMOR PJN/SPJ</th>
+                                            <th>TANGGAL AWAL</th>
+                                            <th>TANGGAL AKHIR </th>
+                                            <th>PENGAWAS</th>
+                                            <th>JENIS PEKERJAAN</th>
                                             <th>AKSI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                            $query = mysqli_query($conn, "SELECT * FROM tbl_input1");
+                                            $query = mysqli_query($conn, "SELECT * FROM tbl_input4");
                                             while($data = mysqli_fetch_array($query)) { ?>
                                                 <tr>
-                                                    <td><?= $data['nodin_user'] ?></td>
-                                                    <td><?= $data['tanggal_user'] ?></td>
-                                                    <td><?= $data['uraian'] ?></td>
-                                                    <td><?= $data['nilai_rab'] ?></td>
-                                                    <td><?= $data['nodin_ren'] ?></td>
-                                                    <td><?= $data['tanggal_ren'] ?></td>
-                                                    <td><?= $data['sumber_anggaran'] ?></td>
-                                                    <td><?= $data['nilai_hpe'] ?></td>
+                                                    <td><?= $data['nomer_pjn_spj'] ?></td>
+                                                    <td><?= $data['tanggal_awal'] ?></td>
+                                                    <td><?= $data['tanggal_akhir'] ?></td>
+                                                    <td><?= $data['pengawas'] ?></td>
+                                                    <td><?= $data['jenis_pekerjaan'] ?></td>
                                                     <td>
-                                                    <a href="?page=inpit1edit" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                                                    <a href="?page=inpit1edit" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+
+                                                    <?php if ($page == 'input1') { ?>
+                                                    <a class="btn btn-primary" href="?page=input1edit&id=<?php echo $data['nomer_pjn_spj']; ?>"><i class="fa fa-edit"></i> edit</a>
+                                                    <a class="btn btn-danger" href="?page=input1hapus&id=<?php echo $data['nomer_pjn_spj']; ?>"><i class="fa fa-trash"></i> hapus</a>
+                                                    <?php } ?>
                                                     </td>
                                                 </tr>
                                         <?php } ?>

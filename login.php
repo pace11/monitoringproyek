@@ -18,10 +18,22 @@
 <body class="hold-transition login-page">
 <div class="login-box">
 
+
   <div class="login-logo"><i class="fa fa-user"></i> <b>LOGIN</b></div>
 
+
   <div class="login-box-body">
-    <p class="login-box-msg">Please Login</p>
+    <!-- <p class="login-box-msg">Please Login</p> -->
+    <div class="card">
+    <div class="card-body login-card-body">
+      <!-- <h2 class="text-center">LOGIN</h2> -->
+      <div class="text-center">
+        <img class="text-center" src="pln.png" width="50%">
+        <p> Please Login</p>
+        <br>
+        
+        <br>
+      </div>
 
     <form action="login.php" method="post">
       <div class="form-group has-feedback">

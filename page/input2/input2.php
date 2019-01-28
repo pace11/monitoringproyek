@@ -1,7 +1,7 @@
 <section class="content-header">
-    <h1>Input 2</h1>
+    <h1>INPUT PENGAWAS</h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Input</a></li>
+        <li><a href="#"><i class="fa fa-home"></i> Beranda</a></li>
     </ol>
 </section>
 
@@ -10,41 +10,48 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="box box-primary">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Quick Example</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <form action="">
-                    <div class="box-body">
-                        <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
                         </div>
-                        <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
+                        <div class="box-body">
+                            <div class="table-responsive">
+                               <div class="card-body">
 
-                        <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                        <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                        </div>
-                    </div>
-                    <!-- /.box-body -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-2">
 
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                                            <div class="form-group">
+                                                <label>No SPJ</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <a href="#" class="btn btn-success btn-sm"><?= $data['no_pjn_spj'] ?></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Jenis Pekerjaan</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <a href="#" class="btn btn-success btn-sm"><?= $data['jenis_pekerjaan'] ?></a>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                    </form>
-                </div>
                 </div>
             </div>
         </div>

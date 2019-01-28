@@ -11,12 +11,14 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
+        <li class="header">MONITORING PROYEK</li>
         <li class="<?php if ($_GET['page'] == 'dashboard'){ echo "active";} ?>">
-            <a href="?page=dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+
+            <a href="?page=dashboard"><i class="fa fa-home"></i> <span>Beranda</span></a>
         </li>
-        <li class="treeview <?php if ($_GET['page'] == 'input1' || $_GET['page'] == 'input2' || $_GET['page'] == 'input3' || $_GET['page'] == 'input4' ||
-                                      $_GET['page'] == 'input1tambah'){echo "active";} ?>">
+        <li class="treeview <?php if ($_GET['page'] == 'input1' || $_GET['page'] == 'input2' ||
+            $_GET['page'] == 'input1tambah' || $_GET['page'] == 'input2tambah' || $_GET['page'] == 'input1tambahpro' || $_GET['page'] == 'input2tambahpro' || $_GET['page'] == 'input3tambahpro' ||
+            $_GET['page'] == 'input1edit' || $_GET['page'] == 'input2edit' || $_GET['page'] == 'input1editpro' || $_GET['page'] == 'input2editpro' || $_GET['page'] == 'input1hapus' || $_GET['page'] == 'input2hapus' ){echo "active";} ?>">
           <a href="#">
             <i class="fa fa-pencil"></i> <span>Input</span>
             <span class="pull-right-container">
@@ -24,11 +26,10 @@
             </span>
           </a>
           <ul class="treeview-menu ">
-            <li class="<?php if($_GET['page'] == 'input1' || $_GET['page'] == 'input1tambah') {echo "active";} ?>"><a href="?page=input1"><i class="fa fa-circle-o"></i>input 1</a></li>
-            <li class="<?php if($_GET['page'] == 'input2') {echo "active";} ?>"><a href="?page=input2"><i class="fa fa-circle-o"></i>input 2</a></li>
-            <li class="<?php if($_GET['page'] == 'input3') {echo "active";} ?>"><a href="?page=input3"><i class="fa fa-circle-o"></i>input 3</a></li>
-            <li class="<?php if($_GET['page'] == 'input4') {echo "active";} ?>"><a href="?page=input4"><i class="fa fa-circle-o"></i>input 4</a></li>
+            <li class="<?php if($_GET['page'] == 'input1' || $_GET['page'] == 'input1tambah' || $_GET['page'] == 'input1tambahpro' || $_GET['page'] == 'input1edit' || $_GET['page'] == 'input1editpro' || $_GET['page'] == 'input1hapus') {echo "active";} ?>"><a href="?page=input1"><i class="fa fa-circle-o"></i>input 1</a></li>
+            <li class="<?php if($_GET['page'] == 'input2' || $_GET['page'] == 'input2tambah' || $_GET['page'] == 'input2tambahpro' || $_GET['page'] == 'input2edit' || $_GET['page'] == 'input2editpro' || $_GET['page'] == 'input2hapus') {echo "active";} ?>"><a href="?page=input2"><i class="fa fa-circle-o"></i>input 2</a></li>
           </ul>
+
         </li>
     </ul>
 </section>

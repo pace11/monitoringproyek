@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jan 2019 pada 07.46
--- Versi server: 10.1.33-MariaDB
--- Versi PHP: 7.2.6
+-- Generation Time: Jan 29, 2019 at 07:26 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,11 +25,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_input4`
+-- Table structure for table `tbl_input4`
 --
 
 CREATE TABLE `tbl_input4` (
-  `nomer_pjn_spj` int(10) NOT NULL,
+  `nomer_pjn_spj` varchar(40) NOT NULL,
   `tanggal_awal` date NOT NULL,
   `tanggal_akhir` date NOT NULL,
   `pengawas` text NOT NULL,
@@ -37,17 +37,18 @@ CREATE TABLE `tbl_input4` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_input4`
+-- Dumping data for table `tbl_input4`
 --
 
 INSERT INTO `tbl_input4` (`nomer_pjn_spj`, `tanggal_awal`, `tanggal_akhir`, `pengawas`, `jenis_pekerjaan`) VALUES
-(1, '2019-01-13', '1970-01-01', 'gvhjb', 'SKTM'),
-(2, '2019-01-19', '1970-01-01', 'fgdgthfy', 'Sipil');
+('PJN/SPJ/29-01-2019/0001', '2019-01-29', '2019-01-30', 'Pak Ocid', 'SKTM'),
+('PJN/SPJ/29-01-2019/0002', '2019-01-29', '2019-01-31', 'Pak Rakhmadi', 'SIPIL'),
+('PJN/SPJ/29-01-2019/0003', '2019-02-12', '2019-02-13', 'Pak Asep', 'SKTM');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_input5`
+-- Table structure for table `tbl_input5`
 --
 
 CREATE TABLE `tbl_input5` (
@@ -60,7 +61,7 @@ CREATE TABLE `tbl_input5` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_input5`
+-- Dumping data for table `tbl_input5`
 --
 
 INSERT INTO `tbl_input5` (`nodin_ren`, `uraian`, `harga`, `bobot`, `hari_kerja_week`, `masa_spj`) VALUES
@@ -69,7 +70,7 @@ INSERT INTO `tbl_input5` (`nodin_ren`, `uraian`, `harga`, `bobot`, `hari_kerja_w
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_sipil`
+-- Table structure for table `tbl_sipil`
 --
 
 CREATE TABLE `tbl_sipil` (
@@ -77,7 +78,7 @@ CREATE TABLE `tbl_sipil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_sipil`
+-- Dumping data for table `tbl_sipil`
 --
 
 INSERT INTO `tbl_sipil` (`id_sipil`) VALUES
@@ -87,7 +88,7 @@ INSERT INTO `tbl_sipil` (`id_sipil`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_sktm`
+-- Table structure for table `tbl_sktm`
 --
 
 CREATE TABLE `tbl_sktm` (
@@ -95,7 +96,7 @@ CREATE TABLE `tbl_sktm` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_sktm`
+-- Dumping data for table `tbl_sktm`
 --
 
 INSERT INTO `tbl_sktm` (`id_sktm`) VALUES
@@ -105,7 +106,7 @@ INSERT INTO `tbl_sktm` (`id_sktm`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -115,7 +116,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`username`, `password`, `role`) VALUES
@@ -128,31 +129,31 @@ INSERT INTO `tbl_user` (`username`, `password`, `role`) VALUES
 --
 
 --
--- Indeks untuk tabel `tbl_input4`
+-- Indexes for table `tbl_input4`
 --
 ALTER TABLE `tbl_input4`
   ADD PRIMARY KEY (`nomer_pjn_spj`);
 
 --
--- Indeks untuk tabel `tbl_input5`
+-- Indexes for table `tbl_input5`
 --
 ALTER TABLE `tbl_input5`
   ADD PRIMARY KEY (`nodin_ren`);
 
 --
--- Indeks untuk tabel `tbl_sipil`
+-- Indexes for table `tbl_sipil`
 --
 ALTER TABLE `tbl_sipil`
   ADD PRIMARY KEY (`id_sipil`);
 
 --
--- Indeks untuk tabel `tbl_sktm`
+-- Indexes for table `tbl_sktm`
 --
 ALTER TABLE `tbl_sktm`
   ADD PRIMARY KEY (`id_sktm`);
 
 --
--- Indeks untuk tabel `tbl_user`
+-- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`username`);

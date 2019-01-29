@@ -37,7 +37,7 @@
                                             $query = mysqli_query($conn, "SELECT * FROM tbl_input4");
                                             while($data = mysqli_fetch_array($query)) { ?>
                                                 <tr>
-                                                    <td><?= $data['nomer_pjn_spj'] ?></td>
+                                                    <td><a class="btn btn-success btn-sm"><?= $data['nomer_pjn_spj'] ?></a></td>
                                                     <td><?= $data['tanggal_awal'] ?></td>
                                                     <td><?= $data['tanggal_akhir'] ?></td>
                                                     <td><?= $data['pengawas'] ?></td>
@@ -45,8 +45,8 @@
                                                     <td>
 
                                                     <?php if ($page == 'input1') { ?>
-                                                    <a class="btn btn-primary" href="?page=input1edit&id=<?php echo $data['nomer_pjn_spj']; ?>"><i class="fa fa-edit"></i> edit</a>
-                                                    <a class="btn btn-danger" href="?page=input1hapus&id=<?php echo $data['nomer_pjn_spj']; ?>"><i class="fa fa-trash"></i> hapus</a>
+                                                    <a class="btn btn-primary btn-sm" href="?page=input1edit&id=<?php echo $data['nomer_pjn_spj']; ?>"><i class="fa fa-edit"></i> edit</a>
+                                                    <a class="btn btn-danger btn-sm" href="?page=input1hapus&id=<?php echo $data['nomer_pjn_spj']; ?>"><i class="fa fa-trash"></i> hapus</a>
                                                     <?php } ?>
                                                     </td>
                                                 </tr>

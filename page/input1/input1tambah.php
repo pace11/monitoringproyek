@@ -4,6 +4,19 @@
         <li><a href="#"><i class="fa fa-home"></i> Beranda</a></li>
     </ol>
 </section>
+<?php 
+
+$get_id = mysqli_query($conn, "SELECT nomer_pjn_spj FROM tbl_input4 WHERE SUBSTRING(nomer_pjn_spj,1,7)='PJN/SPJ'") or die (mysqli_error($conn));
+        $trim_id = mysqli_query($conn, "SELECT SUBSTRING(nomer_pjn_spj,-4,4) as hasil FROM tbl_input4 WHERE SUBSTRING(nomer_pjn_spj,1,7)='PJN/SPJ' ORDER BY hasil DESC LIMIT 1") or die (mysqli_error($conn));
+        $hit    = mysqli_num_rows($get_id);
+        if ($hit == 0){
+            $id_k   = "PJN/SPJ/".date("d-m-Y")."/0001";
+        } else if ($hit > 0){
+            $row    = mysqli_fetch_array($trim_id);
+            $kode   = $row['hasil']+1;
+            $id_k   = "PJN/SPJ/".date("d-m-Y")."/".str_pad($kode,4,"0",STR_PAD_LEFT); 
+        }
+ ?>
 
 <section class="content container-fluid">
     <div class="row">
@@ -18,52 +31,52 @@
                         <form action="?page=input1tambahpro" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nomor PJN/SPJ</label>    
-                                        <input type="text" class="form-control" name="nomer_pjn_spj" placeholder="Masukan Nomor PJN/SPJ" required>
+                                        <input type="text" class="form-control" name="nomer_pjn_spj" placeholder="Masukan Nomor PJN/SPJ" value="<?= $id_k ?>" readonly>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Tanggal Awal</label>    
-                                        <input type="date" class="form-control" name="tanggal_awal" placeholder="Masukan Tanggal Awal" required>
+                                        <input type="text" id="datepicker" class="form-control" name="tanggal_awal" placeholder="Masukan Tanggal Awal" autocomplete="off" required>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Tanggal Akhir</label>    
-                                        <input type="date" class="form-control" name="tanggal_akhir" placeholder="Masukan Tanggal Akhir" required>
+                                        <input type="text" id="datepicker2" class="form-control" name="tanggal_akhir" placeholder="Masukan Tanggal Akhir" autocomplete="off" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                          <label>Pengawas</label>    
-                                        <input type="text" class="form-control" name="pengawas" placeholder="Masukan nama pengawas" required>
+                                        <input type="text" class="form-control" name="pengawas" placeholder="Masukan nama pengawas" autocomplete="off" required>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">   
                                         <label>Jenis Pekerjaan</label>
                                         <select class="form-control" name="jenis_pekerjaan">
-                                        <option value="" style="display:none;">-- pilih salah satu --</option>
-                                        <option>SKTM</option>
-                                        <option>Sipil</option>
+                                            <option style="display:none;">-- pilih salah satu --</option>
+                                            <option value="SKTM">SKTM</option>
+                                            <option value="SIPIL">SIPIL</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                         <div class="box-footer">
                             <input type="submit" name="submit" class="btn btn-success" value="Simpan">
-                            <input type="submit" name="submit" class="btn btn-danger" value = "Batal">    
+                            <a href="?page=input1" class="btn btn-danger">Batal</a>    
                         </div>
                         </form>
                     </div>

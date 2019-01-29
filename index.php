@@ -98,6 +98,20 @@
     CKEDITOR.replace('editor1')
   })
 </script>
+<script>
+  $(function () {
+    $("#datepicker,#datepicker2").datepicker({
+      dateFormat: "mm/dd/yy",
+      showOtherMonths: true,
+      selectOtherMonths: true,
+      autoclose: true,
+      changeMonth: true,
+      changeYear: true,
+      todayHighlight: true,
+      orientation: "bottom" 
+    });
+  });
+</script>
 </body>
 </html>
 <?php

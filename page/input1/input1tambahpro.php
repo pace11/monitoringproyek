@@ -20,7 +20,9 @@
                             
                             if (isset($_POST['submit'])){
                                 
-                                $nomer_pjn_spj   = $_POST['nomer_pjn_spj'];
+                                $no_1            = $_POST['no_1'];
+                                $no_2            = $_POST['no_2'];
+                                $nomer_pjn_spj   = $no_1."/DAN 02.03/A.BLG/".$no_2;
                                 $tanggal_awal    = date("Y-m-d", strtotime($_POST['tanggal_awal']));
                                 $tanggal_akhir   = date("Y-m-d", strtotime($_POST['tanggal_akhir']));
                                 $pengawas        = $_POST['pengawas'];

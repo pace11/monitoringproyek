@@ -112,6 +112,28 @@
     });
   });
 </script>
+<script>
+    $(document).ready(function(){
+      $('#tblsktm,#tblsipil').hide();
+      $("#nopjn").change(function(){
+        var no  = $("#nopjn").val();
+          $.ajax({
+            url:"page/input2/listjenispekerjaan.php",
+            data:"no=" + no,
+            success:function(data){
+              $("#jenispekerjaan").val(data);
+              if ($("#jenispekerjaan").val() == 'SKTM'){
+                $('#tblsktm').show(500);
+                $('#tblsipil').hide();
+              } else {
+                $('#tblsipil').show(500);
+                $('#tblsktm').hide();
+              }
+            }
+          });
+      });
+    });
+  </script>
 </body>
 </html>
 <?php

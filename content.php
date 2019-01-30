@@ -30,6 +30,13 @@ elseif ($page == "logout") include("page/logout.php");
     elseif ($page == "input2editpro")         include("page/input2/input2editpro.php");
     elseif ($page == "input2hapus")           include("page/input2/input2hapus.php");
 
+    // -------------------------- Input --------------------------
+    elseif ($page == "input3")                include("page/input3/input3.php");
+    elseif ($page == "input3tambah")          include("page/input3/input3tambah.php");
+    elseif ($page == "input3tambahpro")       include("page/input3/input3tambahpro.php");
+    elseif ($page == "input3edit")            include("page/input3/input3edit.php");
+    elseif ($page == "input3editpro")         include("page/input3/input3editpro.php");
+    elseif ($page == "input3hapus")           include("page/input3/input3hapus.php");
 
 
 else echo"Konten tidak ada";

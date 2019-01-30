@@ -6,16 +6,16 @@
 </section>
 <?php 
 
-$get_id = mysqli_query($conn, "SELECT nomer_pjn_spj FROM tbl_input4 WHERE SUBSTRING(nomer_pjn_spj,1,7)='PJN/SPJ'") or die (mysqli_error($conn));
-        $trim_id = mysqli_query($conn, "SELECT SUBSTRING(nomer_pjn_spj,-4,4) as hasil FROM tbl_input4 WHERE SUBSTRING(nomer_pjn_spj,1,7)='PJN/SPJ' ORDER BY hasil DESC LIMIT 1") or die (mysqli_error($conn));
-        $hit    = mysqli_num_rows($get_id);
-        if ($hit == 0){
-            $id_k   = "PJN/SPJ/".date("d-m-Y")."/0001";
-        } else if ($hit > 0){
-            $row    = mysqli_fetch_array($trim_id);
-            $kode   = $row['hasil']+1;
-            $id_k   = "PJN/SPJ/".date("d-m-Y")."/".str_pad($kode,4,"0",STR_PAD_LEFT); 
-        }
+// $get_id = mysqli_query($conn, "SELECT nomer_pjn_spj FROM tbl_input4 WHERE SUBSTRING(nomer_pjn_spj,1,7)='PJN/SPJ'") or die (mysqli_error($conn));
+//         $trim_id = mysqli_query($conn, "SELECT SUBSTRING(nomer_pjn_spj,-4,4) as hasil FROM tbl_input4 WHERE SUBSTRING(nomer_pjn_spj,1,7)='PJN/SPJ' ORDER BY hasil DESC LIMIT 1") or die (mysqli_error($conn));
+//         $hit    = mysqli_num_rows($get_id);
+//         if ($hit == 0){
+//             $id_k   = "PJN/SPJ/".date("d-m-Y")."/0001";
+//         } else if ($hit > 0){
+//             $row    = mysqli_fetch_array($trim_id);
+//             $kode   = $row['hasil']+1;
+//             $id_k   = "PJN/SPJ/".date("d-m-Y")."/".str_pad($kode,4,"0",STR_PAD_LEFT); 
+//         }
  ?>
 
 <section class="content container-fluid">
@@ -33,8 +33,12 @@ $get_id = mysqli_query($conn, "SELECT nomer_pjn_spj FROM tbl_input4 WHERE SUBSTR
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Nomor PJN/SPJ</label>    
-                                        <input type="text" class="form-control" name="nomer_pjn_spj" placeholder="Masukan Nomor PJN/SPJ" value="<?= $id_k ?>" readonly>
+                                        <label>Nomor PJN/SPJ</label> 
+                                        <div class="input-group">
+                                            <input type="text" name="no_1" class="form-control" placeholder="0001" required>
+                                            <span class="input-group-addon">/DAN 02.03/A.BLG/</span>
+                                            <input type="text" name="no_2" class="form-control" placeholder="2018" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

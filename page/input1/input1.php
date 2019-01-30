@@ -1,5 +1,5 @@
 <section class="content-header">
-    <h1>INPUT DIREKSI PEKERJAAN </h1>
+    <h1><i class="fa fa-plus-circle"></i> INPUT DIREKSI PEKERJAAN </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i> Beranda</a></li>
     </ol>

@@ -5,17 +5,42 @@
     $userdata = mysqli_fetch_array($sql);
 
     function getValPekerjaan($id,$kerja){
-        // include "lib/koneksi.php";
-        // if($kerja == 'SKTM'){
-        //     $sql = "SELECT * FROM tbl_sktm";
-        // } else {
-        //     $sql = "SELECT * FROM tbl_sipil";
-        // }
-        // $query = mysqli_query($conn,$sql);
-        // $
-        // while($data = mysqli_fetch_array($query)){
-
-        // }
+        include "lib/koneksi.php";
+        if($kerja == 'SKTM'){
+            $query = mysqli_query($conn,"SELECT * FROM tbl_sktm");
+            $getval = mysqli_query($conn, "SELECT value_pekerjaan FROM tbl_input2 WHERE nomer_pjn_spj='$id'");
+            $dataval = mysqli_fetch_array($getval);
+            $json = json_decode($dataval['value_pekerjaan']);
+            $no=0;
+            echo "<div class='table-responsive'><table class='table table-bordered'><thead><tr><th>Uraian</th><th>Harga</th><th>Bobot</th><th>Hari Kerja</th></tr></thead><tbody>";
+            while($data = mysqli_fetch_array($query)){
+                echo "<tr>";
+                echo "<td>".$data['id_sktm']."</td>";
+                echo "<td>".$json[$no]->harga."</td>";
+                echo "<td>".$json[$no]->bobot."</td>";
+                echo "<td>".$json[$no]->harikerja."</td>";
+                echo "</tr>";
+                $no++;
+            }
+            echo "</tbody></table></div>";
+        } else {
+            $query = mysqli_query($conn,"SELECT * FROM tbl_sipil");
+            $getval = mysqli_query($conn, "SELECT value_pekerjaan FROM tbl_input2 WHERE nomer_pjn_spj='$id'");
+            $dataval = mysqli_fetch_array($getval);
+            $json = json_decode($dataval['value_pekerjaan']);
+            $no=0;
+            echo "<div class='table-responsive'><table class='table table-bordered'><thead><tr><th>Uraian</th><th>Harga</th><th>Bobot</th><th>Hari Kerja</th></tr></thead><tbody>";
+            while($data = mysqli_fetch_array($query)){
+                echo "<tr>";
+                echo "<td>".$data['id_sipil']."</td>";
+                echo "<td>".$json[$no]->harga."</td>";
+                echo "<td>".$json[$no]->bobot."</td>";
+                echo "<td>".$json[$no]->harikerja."</td>";
+                echo "</tr>";
+                $no++;
+            }
+            echo "</tbody></table></div>";
+        }
     }
 
 ?>

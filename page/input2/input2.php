@@ -36,7 +36,22 @@
                                                 <tr>
                                                     <td><?= $no ?></td>
                                                     <td><?= $data['nomer_pjn_spj'] ?></td>
-                                                    <td><?= $data['value_pekerjaan'] ?></td>
+                                                    <td>
+                                                        <div class="panel box box-success">
+                                                            <div class="box-header with-border">
+                                                                <h4 class="box-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $no ?>">
+                                                                Data <?= $data['nomer_pjn_spj'] ?>
+                                                                </a>
+                                                                </h4>
+                                                            </div>
+                                                            <div id="collapse<?= $no ?>" class="panel-collapse collapse">
+                                                                <div class="box-body">
+                                                                    <?= getValPekerjaan($data['nomer_pjn_spj'],$data['jenis_pekerjaan']) ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                     <a class="btn btn-primary btn-sm" href="?page=input1edit&id=<?php echo $data['id_pekerjaan']; ?>"><i class="fa fa-edit"></i> edit</a>
                                                     <a class="btn btn-danger btn-sm" href="?page=input1hapus&id=<?php echo $data['id_pekerjaan']; ?>"><i class="fa fa-trash"></i> hapus</a>

@@ -13,37 +13,88 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <div class="pull-left">
+                                <h3 class="box-title">List Data</h3>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table id="table1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>NOMER PJN SPJ</th>
+                                            <th>VALUE PEKERJAAN</th>
+                                            <th>AKSI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $no = 1;
+                                            $query = mysqli_query($conn, "SELECT * FROM tbl_input2
+                                                                          JOIN tbl_input4 ON tbl_input2.nomer_pjn_spj=tbl_input4.nomer_pjn_spj");
+                                            while($data = mysqli_fetch_array($query)) { ?>
+                                                <tr>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $data['nomer_pjn_spj'] ?></td>
+                                                    <td><?= $data['value_pekerjaan'] ?></td>
+                                                    <td>
+                                                    <a class="btn btn-primary btn-sm" href="?page=input1edit&id=<?php echo $data['id_pekerjaan']; ?>"><i class="fa fa-edit"></i> edit</a>
+                                                    <a class="btn btn-danger btn-sm" href="?page=input1hapus&id=<?php echo $data['id_pekerjaan']; ?>"><i class="fa fa-trash"></i> hapus</a>
+                                                    </td>
+                                                </tr>
+                                        <?php $no++; } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                              
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <div class="pull-left">
                                 <h3 class="box-title">Form Pengisian Pengawas</h3>
                             </div>
                         </div>
                         <div class="box-body">
-                                        
-                            <form action="?page=input1tambahpro" method="post" enctype="multipart/form-data">
+                            <form action="?page=input2tambahpro" method="post" enctype="multipart/form-data">
                                         
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Nomor PJN/SPJ</label>    
-                                            <select id="nopjn" class="form-control">
+                                            <select id="nopjn" class="form-control" name="nopjn">
                                             <option style="display:none;">-- pilih salah satu --</option>
                                             <?php 
-                                            $noPjn = mysqli_query($conn, "SELECT * FROM tbl_input4");
+                                            $noPjn = mysqli_query($conn, "SELECT tbl_input4.nomer_pjn_spj as nomer FROM tbl_input4
+                                                                          LEFT JOIN tbl_input2 ON tbl_input4.nomer_pjn_spj=tbl_input2.nomer_pjn_spj
+                                                                          WHERE tbl_input2.nomer_pjn_spj IS NULL");
                                             while($getnoPjn = mysqli_fetch_array($noPjn)){
-                                                echo "<option value='".$getnoPjn['nomer_pjn_spj']."'>".$getnoPjn['nomer_pjn_spj']."</option>";
+                                                echo "<option value='".$getnoPjn['nomer']."'>".$getnoPjn['nomer']."</option>";
                                             } 
                                             ?>
-                                            </select>
+                                            </select>   
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">   
                                             <label>Jenis Pekerjaan</label>
-                                            <input type="text" id="jenispekerjaan" class="form-control">
+                                            <input type="text" id="jenispekerjaan" class="form-control" name="jenispekerjaan" readonly>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8" id="tblsktm">
+                                    <?php
+                                        $hitsktm  = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tbl_sktm"));
+                                    ?>
+                                    <input type="hidden" name="count" value="<?= $hitsktm ?>">
                                         <table class="table table-bordered">
                                             <tbody>
                                             <tr>
@@ -53,114 +104,34 @@
                                                 <th>Bobot</th>
                                                 <th>Hari Kerja</th>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>PEKERJAAN GALIAN</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>PERBAIKAN BEKAS GALIAN</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>PEKERJAAN BORING</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>PENARIKAN DAN PENYAMBUNGAN</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>MATERIAL PELENGKAP</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>PEKERJAAN LAIN-LAIN</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>PENGADAAN MATERIAL</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>8</td>
-                                                <td>PEKERJAAN ANGKUTAN</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                $query = mysqli_query($conn, "SELECT * FROM tbl_sktm");
+                                                while($data = mysqli_fetch_array($query)) {
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $data['id_sktm'] ?></td>
+                                                    <td>
+                                                        <input type="text" class="form-control fieldsktm" name="hargasktm<?= $no ?>">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control fieldsktm" name="bobotsktm<?= $no ?>">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control fieldsktm" name="hari_kerjasktm<?= $no ?>">
+                                                    </td>
+                                                </tr>
+                                            <?php $no++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="col-md-8" id="tblsipil">
+                                    
+                                    <?php
+                                        $hitsipil  = mysqli_num_rows(mysqli_query($conn,"SELECT * FROM tbl_sipil"));
+                                    ?>
+                                    <input type="hidden" name="count" value="<?= $hitsipil ?>">
                                         <table class="table table-bordered">
                                             <tbody>
                                             <tr>
@@ -170,24 +141,34 @@
                                                 <th>Bobot</th>
                                                 <th>Hari Kerja</th>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Masak Siomay</td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="harga">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="bobot">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="hari_kerja">
-                                                </td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                $query = mysqli_query($conn, "SELECT * FROM tbl_sipil");
+                                                while($data = mysqli_fetch_array($query)) {
+                                            ?>
+                                                <tr>
+                                                    <td><?= $no ?></td>
+                                                    <td><?= $data['id_sipil'] ?></td>
+                                                    <td>
+                                                        <input type="text" class="form-control fieldsipil" name="hargasipil<?= $no ?>">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control fieldsipil" name="bobotsipil<?= $no ?>">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control fieldsipil" name="hari_kerjasipil<?= $no ?>">
+                                                    </td>
+                                                </tr>
+                                            <?php $no++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                         </div>
+                        <div class="box-footer">
+                            <input type="submit" id="btninput2" name="submit" class="btn btn-success" value="Simpan">
+                        </div>
+                        </form>                               
                     </div>
                 </div>
             </div>
@@ -195,20 +176,4 @@
     </div>
 </section>
 
-<script type="text/javascript">
 
-function autofill(){
-      var kks = $ ("#kks").val();
-      $.ajax({
-        url : 'autofill-ajax.php',
-        data : 'kks='+kks,
-      }).done (function(data){
-        var json = data;
-        var obj = JSON.parse(json);
-        $("#eq").val(obj.eq);
-        $("#boboteq").val(obj.boboteq);
-        $("#noeq").val(obj.noeq);
-      });
-    }
-
-</script>

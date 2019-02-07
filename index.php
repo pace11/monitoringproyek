@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="bower_components/morris.js/morris.css">
   <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
@@ -71,7 +70,6 @@
 </script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/raphael/raphael.min.js"></script>
-<script src="bower_components/morris.js/morris.min.js"></script>
 <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
@@ -86,16 +84,10 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="bower_components/ckeditor/ckeditor.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/pages/dashboard.js"></script>
 <script src="dist/js/demo.js"></script>
 <script>
   $(function () {
     $('#table1').DataTable()
-  })
-</script>
-<script>
-  $(function () {
-    CKEDITOR.replace('editor1')
   })
 </script>
 <script>
@@ -114,7 +106,7 @@
 </script>
 <script>
     $(document).ready(function(){
-      $('#tblsktm,#tblsipil').hide();
+      $('#tblsktm,#tblsipil,#btninput2').hide();
       $("#nopjn").change(function(){
         var no  = $("#nopjn").val();
           $.ajax({
@@ -122,16 +114,22 @@
             data:"no=" + no,
             success:function(data){
               $("#jenispekerjaan").val(data);
+              $("#btninput2").show();
               if ($("#jenispekerjaan").val() == 'SKTM'){
+                $('.fieldsktm').attr('required',true);
+                $('.fieldsipil').removeAttr('required');
                 $('#tblsktm').show(500);
                 $('#tblsipil').hide();
               } else {
+                $('.fieldsipil').attr('required',true);
+                $('.fieldsktm').removeAttr('required');
                 $('#tblsipil').show(500);
                 $('#tblsktm').hide();
               }
             }
           });
       });
+
     });
   </script>
 </body>

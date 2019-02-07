@@ -4,6 +4,20 @@
     $sql = mysqli_query($conn, "SELECT * FROM tbl_user WHERE username='$user'");
     $userdata = mysqli_fetch_array($sql);
 
+    function getValPekerjaan($id,$kerja){
+        // include "lib/koneksi.php";
+        // if($kerja == 'SKTM'){
+        //     $sql = "SELECT * FROM tbl_sktm";
+        // } else {
+        //     $sql = "SELECT * FROM tbl_sipil";
+        // }
+        // $query = mysqli_query($conn,$sql);
+        // $
+        // while($data = mysqli_fetch_array($query)){
+
+        // }
+    }
+
 ?>
 <a href="?page=dashboard" class="logo">
     <span class="logo-mini"><b>A</b>DM</span>
